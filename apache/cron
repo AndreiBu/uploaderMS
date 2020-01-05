@@ -1,0 +1,2 @@
+* * * * * php /var/www/html/uploader/tools/cron.php >> /var/log/cron.log 2>&1
+

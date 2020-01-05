@@ -1,0 +1,8 @@
+.env
+composer.lock
+.idea
+docker/dashboard_mysql_db
+vendor/
+storage/
+desktop.ini
+project/templates/cache

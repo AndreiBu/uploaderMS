@@ -1,0 +1,14 @@
+{% include 'blocks/header.twig' %}
+
+    <script src="/js/jquery-ui.js"></script>
+    <script src="/js/jquery.iframe-transport.js"></script>
+    <script src="/js/jquery.fileupload.js"></script>
+    <script src="/js/uploader.js"></script>
+    <script src="/js/blockUI.js"></script>
+    <link rel="stylesheet" href="/css/uploader.css">
+
+<input id="fileupload" type="file" name="files" data-url="/upload" multiple>
+<div class="printDataUploader">upload</div>
+<div class="log">log</div>
+
+{% include 'blocks/footer.twig' %}

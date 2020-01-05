@@ -1,0 +1,71 @@
+openapi: 3.0.0
+info:
+  title: HC Uploader API
+  version: 1.0.1
+servers:
+  - url: /api
+    description: Api server
+paths:
+  /auth:
+    get:
+      tags:
+        - auth
+      summary: Get jwt token
+      parameters:
+        - name: token
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: jwt token
+        '401':
+          description: Unauthorized
+        default:
+          description: unexpected error
+  /checkJWT:
+    get:
+      tags:
+        - check JWT token
+      summary: true or false
+      parameters:
+        - name: jwt
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: jwt is valid
+        '401':
+          description: Unauthorized
+        default:
+          description: unexpected error
+  /cdn/thumbnail/by-url:
+    get:
+      tags:
+        - settings
+      summary: Get current user settings
+      parameters:
+        - name: url
+          in: query
+          description: ''
+          required: true
+          schema:
+            type: string
+        - name: size
+          in: query
+          description: 'set size between 50 - 500 / default 100'
+          required: false
+          schema:
+            type: int
+      responses:
+        '200':
+          description: get thumbnail
+        '400':
+          description: Bad Request
+        default:
+          description: unexpected error
