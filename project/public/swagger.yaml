@@ -47,8 +47,8 @@ paths:
   /cdn/thumbnail/by-url:
     get:
       tags:
-        - settings
-      summary: Get current user settings
+        - thumbnail
+      summary: Get current user settings (api route synonym /by-url)
       parameters:
         - name: url
           in: query
@@ -65,6 +65,110 @@ paths:
       responses:
         '200':
           description: get thumbnail
+        '400':
+          description: Bad Request
+        default:
+          description: unexpected error
+  /file:
+    post:
+      tags:
+        - storage
+      summary: save file in to microservice
+      parameters:
+        - name: files
+          in: query
+          description: ''
+          required: true
+          schema:
+            type: file
+        - name: jwt
+          in: query
+          description: 'jwt token'
+          required: true
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'external file uid'
+          required: false
+          schema:
+            type: string
+        - name: webhook
+          in: query
+          description: 'webhook url for the callback after processing'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: return file information
+        '400':
+          description: Bad Request
+        default:
+          description: unexpected error
+    get:
+      tags:
+        - storage
+      summary: get info by uploaded file
+      parameters:
+        - name: uid
+          in: query
+          description: 'unique file id (uid)'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'return file information and available previews thumbnails'
+        '400':
+          description: Bad Request
+        default:
+          description: unexpected error
+  /thumbnail:
+    post:
+      tags:
+        - storage
+      summary: create thumbnail from uploaded file
+      parameters:
+        - name: jwt
+          in: query
+          description: 'jwt token'
+          required: true
+          schema:
+            type: string
+        - name: uid
+          in: query
+          description: 'unique file id (uid)'
+          required: false
+          schema:
+            type: string
+        - name: webhook
+          in: query
+          description: 'webhook url for the callback after processing'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: return thumbnail path and unique thumbnails id (uidt)
+        '400':
+          description: Bad Request
+        default:
+          description: unexpected error
+    get:
+      tags:
+        - storage
+      summary: get thumbnail
+      parameters:
+        - name: uidt
+          in: query
+          description: 'unique thumbnails id (uidt)'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: return thumbnail path
         '400':
           description: Bad Request
         default:

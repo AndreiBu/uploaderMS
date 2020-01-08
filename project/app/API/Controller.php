@@ -63,17 +63,27 @@ class Controller extends AbstractController
 
     public function checkJWT(): void
     {
+
+        if (self::verifyJWT()) {
+            echo 'true';
+        }
+        die();
+    }
+
+    public static function verifyJWT(): bool
+    {
         $token = $_GET['jwt'] ?? '';
         if (empty($token)) {
             \App\Route\Service::getErrorCode();
         }
 
         if (Token::validate($token, TOKEN)) {
-            echo 'true';
+            return true;
         } else {
             \App\Route\Service::get401();
         }
-        die();
+
+        return false;
     }
 
 }

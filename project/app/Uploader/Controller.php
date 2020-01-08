@@ -31,6 +31,11 @@ class Controller extends AbstractController
      */
     public function addFile(): void
     {
+        if (!\App\API\Controller::verifyJWT()) {
+            echo 'no';
+        }
+        echo 'yes';die();
+
         try {
             $imageExt = ['pdf', 'jpg', 'jpeg', 'gif', 'png'];
 
@@ -123,6 +128,25 @@ class Controller extends AbstractController
             ]);
         }
     }
+
+    public function getGileInfo()
+    {
+        \App\Route\Service::getErrorCode(404, 'uid not found');
+    }
+
+    public function createThumbnail()
+    {
+        if (!\App\API\Controller::verifyJWT()) {
+            echo 'no';
+        }
+        echo 'yes';die();
+    }
+
+    public function thumbnail()
+    {
+        \App\Route\Service::getErrorCode(404, 'uidt not found');
+    }
+
 
     public function getFile()
     {

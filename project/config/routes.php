@@ -7,6 +7,11 @@ return [
     ['GET', '/api/auth', 'App\API\Controller@createJWT'],
     ['GET', '/api/checkJWT', 'App\API\Controller@checkJWT'],
     ['GET', '/api/cdn/thumbnail/by-url', 'App\API\Controller@thumbnailByUrl'],
+    ['GET', '/by-url', 'App\API\Controller@thumbnailByUrl'],
+    ['POST', '/api/file', 'App\Uploader\Controller@addFile'],
+    ['GET', '/api/file', 'App\Uploader\Controller@getGileInfo'],
+    ['POST', '/api/thumbnail', 'App\Uploader\Controller@createThumbnail'],
+    ['GET', '/api/thumbnail', 'App\Uploader\Controller@thumbnail'],
 
     ['GET', '/health-check', 'App\HealthCheck\Controller@healthCheck'],
 
