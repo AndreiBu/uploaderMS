@@ -5,7 +5,7 @@ git clone git@github.com:AndreiBu/uploaderMS.git
 docker-compose up --build -d
 ```
 
-after starting docker to run composer and artisan migrate 
+after starting docker to run composer and migrate 
 ```bash
 docker exec uploader /preset.sh
 ```
